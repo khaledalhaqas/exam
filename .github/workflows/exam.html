@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>SE 460 Final Exam</title>
+    <style>
+        .answer {
+            display: none;
+        }
+        .correct {
+            color: green;
+        }
+        .incorrect {
+            color: red;
+        }
+    </style>
+    <script>
+        function checkAnswer(inputId, correctAnswer) {
+            var input = document.getElementById(inputId);
+            var userAnswer = input.value.trim();
+            var feedback = document.getElementById(inputId + "-feedback");
+            if (userAnswer.toLowerCase() === correctAnswer.toLowerCase()) {
+                feedback.textContent = "Correct!";
+                feedback.className = "correct";
+            } else {
+                feedback.textContent = "Incorrect. The correct answer is: " + correctAnswer;
+                feedback.className = "incorrect";
+            }
+            feedback.style.display = "block";
+        }
+
+        function checkMultipleChoice(questionId, correctOption) {
+            var options = document.getElementsByName(questionId);
+            var feedback = document.getElementById(questionId + "-feedback");
+            var userAnswer = "";
+            for (var i = 0; i < options.length; i++) {
+                if (options[i].checked) {
+                    userAnswer = options[i].value;
+                    break;
+                }
+            }
+            if (userAnswer === correctOption) {
+                feedback.textContent = "Correct!";
+                feedback.className = "correct";
+            } else {
+                feedback.textContent = "Incorrect. The correct answer is: " + correctOption;
+                feedback.className = "incorrect";
+            }
+            feedback.style.display = "block";
+        }
+    </script>
+</head>
+<body>
+
+<h1>SE 460 Final Exam</h1>
+
+<h2>Part I: Multiple Choice Questions</h2>
+
+<h3>Module 4: Password Cracking Techniques and Countermeasures</h3>
+
+<p>
+1. What is the primary purpose of the Security Accounts Manager (SAM) database in Windows?
+    <br><input type="radio" name="question1" value="A"> A) To store passwords in plaintext format
+    <br><input type="radio" name="question1" value="B"> B) To manage user accounts and passwords in hashed format
+    <br><input type="radio" name="question1" value="C"> C) To encrypt files on the system
+    <br><input type="radio" name="question1" value="D"> D) To provide network access control
+    <br><button onclick="checkMultipleChoice('question1', 'B')">Check</button>
+    <span id="question1-feedback" style="display:none;"></span>
+</p>
+
+<p>
+2. Which authentication protocol uses a challenge/response strategy and does not rely on any official protocol specification?
+    <br><input type="radio" name="question2" value="A"> A) NTLM
+    <br><input type="radio" name="question2" value="B"> B) Kerberos
+    <br><input type="radio" name="question2" value="C"> C) LDAP
+    <br><input type="radio" name="question2" value="D"> OAuth
+    <br><button onclick="checkMultipleChoice('question2', 'A')">Check</button>
+    <span id="question2-feedback" style="display:none;"></span>
+</p>
+
+<p>
+3. Kerberos employs which two logically distinct parts to provide mutual authentication?
+    <br><input type="radio" name="question3" value="A"> A) Authentication Server (AS) and Ticket-Granting Server (TGS)
+    <br><input type="radio" name="question3" value="B"> B) Security Accounts Manager (SAM) and Local Security Authority (LSA)
+    <br><input type="radio" name="question3" value="C"> C) Domain Controller (DC) and Key Management Service (KMS)
+    <br><input type="radio" name="question3" value="D"> D) Certificate Authority (CA) and Online Certificate Status Protocol (OCSP)
+    <br><button onclick="checkMultipleChoice('question3', 'A')">Check</button>
+    <span id="question3-feedback" style="display:none;"></span>
+</p>
+
+<p>
+4. What is the primary function of the Key Distribution Center (KDC) in the Kerberos protocol?
+    <br><input type="radio" name="question4" value="A"> A) Encrypting user data
+    <br><input type="radio" name="question4" value="B"> B) Distributing encryption keys
+    <br><input type="radio" name="question4" value="C"> C) Managing password hashes
+    <br><input type="radio" name="question4" value="D"> D) Authenticating users and servers
+    <br><button onclick="checkMultipleChoice('question4', 'D')">Check</button>
+    <span id="question4-feedback" style="display:none;"></span>
+</p>
+
+<p>
+5. Which method is used by attackers to make password hashes available for offline brute-force attacks?
+    <br><input type="radio" name="question5" value="A"> A) Copying the SAM file
+    <br><input type="radio" name="question5" value="B"> B) Dumping the on-disk contents of the SAM file
+    <br><input type="radio" name="question5" value="C"> C) Performing a DoS attack
+    <br><input type="radio" name="question5" value="D"> Using a keylogger
+    <br><button onclick="checkMultipleChoice('question5', 'B')">Check</button>
+    <span id="question5-feedback" style="display:none;"></span>
+</p>
+
+<h3>Module 5: Social Engineering Techniques and Countermeasures</h3>
+
+<p>
+6. Which of the following is a common social engineering attack technique?
+    <br><input type="radio" name="question6" value="A"> A) Phishing
+    <br><input type="radio" name="question6" value="B"> B) Denial-of-Service (DoS)
+    <br><input type="radio" name="question6" value="C"> C) SQL Injection
+    <br><input type="radio" name="question6" value="D"> Man-in-the-Middle (MitM)
+    <br><button onclick="checkMultipleChoice('question6', 'A')">Check</button>
+    <span id="question6-feedback" style="display:none;"></span>
+</p>
+
+<p>
+7. Social engineering attacks primarily exploit which aspect of security?
+    <br><input type="radio" name="question7" value="A"> A) Physical security
+    <br><input type="radio" name="question7" value="B"> B) Network security
+    <br><input type="radio" name="question7" value="C"> C) Human psychology
+    <br><input type="radio" name="question7" value="D"> D) Software vulnerabilities
+    <br><button onclick="checkMultipleChoice('question7', 'C')">Check</button>
+    <span id="question7-feedback" style="display:none;"></span>
+</p>
+
+<p>
+8. Which countermeasure can help mitigate the risks of social engineering attacks?
+    <br><input type="radio" name="question8" value="A"> A) Installing firewalls
+    <br><input type="radio" name="question8" value="B"> B) Conducting regular security awareness training
+    <br><input type="radio" name="question8" value="C"> C) Implementing network segmentation
+    <br><input type="radio" name="question8" value="D"> Using multi-factor authentication
+    <br><button onclick="checkMultipleChoice('question8', 'B')">Check</button>
+    <span id="question8-feedback" style="display:none;"></span>
+</p>
+
+<p>
+9. Which of the following is not a common type of social engineering attack?
+    <br><input type="radio" name="question9" value="A"> A) Phishing
+    <br><input type="radio" name="question9" value="B"> B) Baiting
+    <br><input type="radio" name="question9" value="C"> C) Pretexting
+    <br><input type="radio" name="question9" value="D"> D) SQL Injection
+    <br><button onclick="checkMultipleChoice('question9', 'D')">Check</button>
+    <span id="question9-feedback" style="display:none;"></span>
+</p>
+
+<p>
+10. In a baiting attack, what is typically used to lure victims?
+    <br><input type="radio" name="question10" value="A"> A) False promises of free goods
+    <br><input type="radio" name="question10" value="B"> B) Threatening messages
+    <br><input type="radio" name="question10" value="C"> C) Fake website login pages
+    <br><input type="radio" name="question10" value="D"> D) Unsolicited emails
+    <br><button onclick="checkMultipleChoice('question10', 'A')">Check</button>
+    <span id="question10-feedback" style="display:none;"></span>
+</p>
+
+<h3>Module 6: Network Level Attacks and Countermeasures</h3>
+
+<p>
+11. Which network level attack involves intercepting and modifying communications between two parties without their knowledge?
+    <br><input type="radio" name="question11" value="A"> A) Phishing
+    <br><input type="radio" name="question11" value="B"> B) Man-in-the-Middle (MitM)
+    <br><input type="radio" name="question11" value="C"> C) SQL Injection
+    <br><input type="radio" name="question11" value="D"> Denial-of-Service (DoS)
+    <br><button onclick="checkMultipleChoice('question11', 'B')">Check</button>
+    <span id="question11-feedback" style="display:none;"></span>
+</p>
+
+<p>
+12. A common method to protect against network-level attacks is to:
+    <br><input type="radio" name="question12" value="A"> A) Use encryption protocols like SSL/TLS
+    <br><input type="radio" name="question12" value="B"> B) Disable firewalls
+    <br><input type="radio" name="question12" value="C"> C) Reduce the number of network devices
+    <br><input type="radio" name="question12" value="D"> D) Use simple passwords
+    <br><button onclick="checkMultipleChoice('question12', 'A')">Check</button>
+    <span id="question12-feedback" style="display:none;"></span>
+</p>
+
+<p>
+13. Which attack involves overwhelming a network service with excessive requests, making it unavailable to legitimate users?
+    <br><input type="radio" name="question13" value="A"> A) Man-in-the-Middle (MitM)
+    <br><input type="radio" name="question13" value="B"> B) SQL Injection
+    <br><input type="radio" name="question13" value="C"> C) Denial-of-Service (DoS)
+    <br><input type="radio" name="question13" value="D"> D) Cross-Site Scripting (XSS)
+    <br><button onclick="checkMultipleChoice('question13', 'C')">Check</button>
+    <span id="question13-feedback" style="display:none;"></span>
+</p>
+
+<p>
+14. What is the primary purpose of network segmentation as a countermeasure?
+    <br><input type="radio" name="question14" value="A"> A) To increase network speed
+    <br><input type="radio" name="question14" value="B"> B) To isolate critical systems and limit the spread of attacks
+    <br><input type="radio" name="question14" value="C"> C) To simplify network management
+    <br><input type="radio" name="question14" value="D"> D) To provide wireless access points
+    <br><button onclick="checkMultipleChoice('question14', 'B')">Check</button>
+    <span id="question14-feedback" style="display:none;"></span>
+</p>
+
+<h3>Module 6: Network Level Attacks and Countermeasures (continued)</h3>
+
+<p>
+15. Which type of attack involves sending a flood of network packets to a target system to consume available network bandwidth?
+    <br><input type="radio" name="question15" value="A"> A) Spoofing
+    <br><input type="radio" name="question15" value="B"> B) Phishing
+    <br><input type="radio" name="question15" value="C"> C) Packet Sniffing
+    <br><input type="radio" name="question15" value="D"> D) Denial-of-Service (DoS)
+    <br><button onclick="checkMultipleChoice('question15', 'D')">Check</button>
+    <span id="question15-feedback" style="display:none;"></span>
+</p>
+
+<p>
+16. What is the main goal of a man-in-the-middle (MitM) attack?
+    <br><input type="radio" name="question16" value="A"> A) To encrypt data
+    <br><input type="radio" name="question16" value="B"> B) To eavesdrop and alter communication
+    <br><input type="radio" name="question16" value="C"> C) To block network traffic
+    <br><input type="radio" name="question16" value="D"> D) To increase network speed
+    <br><button onclick="checkMultipleChoice('question16', 'B')">Check</button>
+    <span id="question16-feedback" style="display:none;"></span>
+</p>
+
+<h3>Module 7: Web Application Attacks and Countermeasures (continued)</h3>
+
+<p>
+18. What is the primary defense mechanism against SQL injection attacks?
+    <br><input type="radio" name="question18" value="A"> A) Using Captchas
+    <br><input type="radio" name="question18" value="B"> B) Using firewalls
+    <br><input type="radio" name="question18" value="C"> C) Input validation and parameterized queries
+    <br><input type="radio" name="question18" value="D"> D) Disabling cookies
+    <br><button onclick="checkMultipleChoice('question18', 'C')">Check</button>
+    <span id="question18-feedback" style="display:none;"></span>
+</p>
+
+<p>
+19. Which web application vulnerability allows attackers to execute arbitrary scripts in the context of another user's session?
+    <br><input type="radio" name="question19" value="A"> A) Cross-Site Scripting (XSS)
+    <br><input type="radio" name="question19" value="B"> B) SQL Injection
+    <br><input type="radio" name="question19" value="C"> C) Cross-Site Request Forgery (CSRF)
+    <br><input type="radio" name="question19" value="D"> D) Buffer Overflow
+    <br><button onclick="checkMultipleChoice('question19', 'A')">Check</button>
+    <span id="question19-feedback" style="display:none;"></span>
+</p>
+
+<h3>Module 8: Wireless Attacks and Countermeasures</h3>
+
+<p>
+20. Which protocol is designed to provide secure communication over a wireless network?
+    <br><input type="radio" name="question20" value="A"> A) HTTP
+    <br><input type="radio" name="question20" value="B"> B) WEP
+    <br><input type="radio" name="question20" value="C"> C) WPA3
+    <br><input type="radio" name="question20" value="D"> D) FTP
+    <br><button onclick="checkMultipleChoice('question20', 'C')">Check</button>
+    <span id="question20-feedback" style="display:none;"></span>
+</p>
+
+<p>
+21. What is the primary difference between WPA2 and WPA3?
+    <br><input type="radio" name="question21" value="A"> A) WPA3 uses 128-bit encryption while WPA2 uses 256-bit encryption
+    <br><input type="radio" name="question21" value="B"> B) WPA3 provides improved security for open networks compared to WPA2
+    <br><input type="radio" name="question21" value="C"> C) WPA3 requires a longer password than WPA2
+    <br><input type="radio" name="question21" value="D"> D) WPA3 is faster than WPA2
+    <br><button onclick="checkMultipleChoice('question21', 'B')">Check</button>
+    <span id="question21-feedback" style="display:none;"></span>
+</p>
+
+<p>
+22. What does the term "Wi-Fi Protected Access" (WPA) refer to?
+    <br><input type="radio" name="question22" value="A"> A) A method for blocking unauthorized access to a computer network
+    <br><input type="radio" name="question22" value="B"> B) A security protocol designed to secure wireless computer networks
+    <br><input type="radio" name="question22" value="C"> C) A tool for managing network bandwidth
+    <br><input type="radio" name="question22" value="D"> D) A technique for optimizing Wi-Fi performance
+    <br><button onclick="checkMultipleChoice('question22', 'B')">Check</button>
+    <span id="question22-feedback" style="display:none;"></span>
+</p>
+
+<h2>Part II: Fill in the Gap</h2>
+
+<p>
+1. The <input type="text" id="answer1" placeholder="Enter your answer"> protocol uses tickets to prove a user's identity and provides mutual authentication between a client and a server.
+    <button onclick="checkAnswer('answer1', 'Kerberos')">Check</button>
+    <span id="answer1-feedback" style="display:none;"></span>
+</p>
+
+<p>
+2. <input type="text" id="answer2" placeholder="Enter your answer"> is a social engineering attack that involves sending fraudulent emails to trick recipients into revealing sensitive information.
+    <button onclick="checkAnswer('answer2', 'Phishing')">Check</button>
+    <span id="answer2-feedback" style="display:none;"></span>
+</p>
+
+<p>
+3. A <input type="text" id="answer3" placeholder="Enter your answer"> attack involves overwhelming a network service with excessive requests, rendering it unavailable to legitimate users.
+    <button onclick="checkAnswer('answer3', 'Denial-of-Service (DoS)')">Check</button>
+    <span id="answer3-feedback" style="display:none;"></span>
+</p>
+
+<p>
+4. <input type="text" id="answer4" placeholder="Enter your answer"> involves using malicious code injected into a web application to be executed by the user's browser.
+    <button onclick="checkAnswer('answer4', 'Cross-Site Scripting (XSS)')">Check</button>
+    <span id="answer4-feedback" style="display:none;"></span>
+</p>
+
+<p>
+5. The wireless encryption protocol <input type="text" id="answer5" placeholder="Enter your answer"> is considered outdated and can be easily cracked.
+    <button onclick="checkAnswer('answer5', 'WEP')">Check</button>
+    <span id="answer5-feedback" style="display:none;"></span>
+</p>
+
+<p>
+6. The process of connecting a wireless device to an access point is known as <input type="text" id="answer6" placeholder="Enter your answer">.
+    <button onclick="checkAnswer('answer6', 'Association')">Check</button>
+    <span id="answer6-feedback" style="display:none;"></span>
+</p>
+
+<p>
+7. A <input type="text" id="answer7" placeholder="Enter your answer"> is a 32-alphanumeric-character unique identifier given to a wireless local area network.
+    <button onclick="checkAnswer('answer7', 'Service Set Identifier (SSID)')">Check</button>
+    <span id="answer7-feedback" style="display:none;"></span>
+</p>
+
+<p>
+8. The <input type="text" id="answer8" placeholder="Enter your answer"> method protects wireless signals against interference or jamming by spreading the signal over a wide range of frequencies.
+    <button onclick="checkAnswer('answer8', 'Direct-Sequence Spread Spectrum (DSSS)')">Check</button>
+    <span id="answer8-feedback" style="display:none;"></span>
+</p>
+
+</body>
+</html>
